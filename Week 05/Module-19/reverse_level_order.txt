@@ -1,0 +1,40 @@
+/************************************************************
+
+    Following is the TreeNode class structure:
+
+    template <typename T>
+
+    class TreeNode {
+    public:
+        T val;
+        TreeNode<T> *left;
+        TreeNode<T> *right;
+        TreeNode(T val) {
+            this->val = val;
+            left = NULL;
+            right = NULL;
+        }
+    };
+
+************************************************************/
+#include <bits/stdc++.h>
+vector<int> reverseLevelOrder(TreeNode<int> *root){
+    queue<TreeNode<int> *>q;
+    stack<int>st;
+    vector<int>v;
+    if(root) q.push(root);
+    while(!q.empty())
+    {
+        TreeNode<int> *f = q.front();
+        q.pop();
+        st.push(f->val);
+        if(f->left) q.push(f->left);
+        if(f->right) q.push(f->right);
+    }
+    while(!st.empty())
+    {
+        v.push_back(st.top());
+        st.pop();
+    }
+    return v;
+}
