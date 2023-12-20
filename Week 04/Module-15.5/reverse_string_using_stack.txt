@@ -1,0 +1,17 @@
+#include <bits/stdc++.h> 
+
+string kevinStackProblem(string& s)
+{
+    stack<char> st;
+    for (char c : s)
+    {
+        st.push(c);
+    }
+    string x;
+    while (!st.empty())
+    {
+        x += st.top();
+        st.pop();
+    }
+    return x;
+}

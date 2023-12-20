@@ -1,0 +1,65 @@
+#include <bits/stdc++.h> 
+// Implement class for minStack.
+class minStack
+{
+	stack<int>st;
+	stack<int>min;
+	public:
+		minStack() 
+		{ 
+
+		}
+		void push(int num)
+	{
+    	if(st.empty())
+		{
+			st.push(num);
+    		min.push(num);
+		}
+		else
+		{
+			st.push(num);
+			if(st.top()<=min.top())
+			{
+				min.push(num);
+			}
+		}
+	}
+
+		int pop()
+		{
+			if(st.empty())
+			{
+				return -1;
+			}
+			else
+			{
+				int k=st.top();
+				st.pop();
+				if(k==min.top())
+				{
+					min.pop();
+				}
+				return k;
+			}	
+		}
+		int top()
+		{
+			if(!st.empty())
+			{
+				return st.top();
+			}
+			else return -1;
+		}
+		int getMin()
+		{
+			if(!min.empty())
+			{
+				return min.top();
+			}
+			else
+			{
+				return -1;
+			}
+		}
+};
